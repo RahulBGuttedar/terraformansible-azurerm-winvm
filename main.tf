@@ -22,7 +22,7 @@ subscription_id="e6273c17-de66-4371-9b4d-70e10906daf0"
 }
 
 variable "admin_password" { sensitive = true }
-variable "allowed_ip" {}
+variable "allowed_ip" {"0.0.0.0/0"}
 variable "location" { default = "westeurope" }
 variable "prefix"   { default = "winvm" }
 
