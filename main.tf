@@ -22,7 +22,7 @@ subscription_id="e6273c17-de66-4371-9b4d-70e10906daf0"
 }
 
 variable "admin_password" { sensitive = true }
-variable "allowed_ip" {}
+variable "allowed_ip" { default = "0.0.0.0/0"}
 variable "location" { default = "westeurope" }
 variable "prefix"   { default = "winvm" }
 
@@ -56,7 +56,6 @@ resource "azurerm_network_security_group" "nsg" {
     direction                  = "Inbound"
     access                     = "Allow"
     protocol                   = "Tcp"
-    source_port_range          = "*"
     destination_port_range     = "3389"
     source_address_prefix      = var.allowed_ip
     destination_address_prefix = "*"
@@ -68,7 +67,6 @@ resource "azurerm_network_security_group" "nsg" {
     direction                  = "Inbound"
     access                     = "Allow"
     protocol                   = "Tcp"
-    source_port_range          = "*"
     destination_port_range     = "5986"
     source_address_prefix      = var.allowed_ip
     destination_address_prefix = "*"
